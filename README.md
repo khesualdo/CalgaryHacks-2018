@@ -11,3 +11,7 @@
 
 ## Color Schemes
 * Coolors - https://coolors.co/browser/latest/1
+
+## TwitterBot
+
+* http://nodotcom.org/python-twitter-tutorial.html
