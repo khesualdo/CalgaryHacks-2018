@@ -3,7 +3,7 @@ from icecream import ic
 
 config = configparser.ConfigParser()
 config.read('TwitterKeys.ini')
-config.sections()
+# config.sections()
 
 consumer_key = None
 consumer_secret = None

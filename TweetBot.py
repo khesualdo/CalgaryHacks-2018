@@ -41,10 +41,12 @@ def tweet(tweet=None, geo_lat=None, geo_long=None):
         raise Exception('No msg for tweet!')
 
     if geo_lat is not None and not isinstance(geo_lat, float):
-        raise Exception('Latitude should be a float')
+        if not isinstance(geo_lat, int):
+            raise Exception('Latitude should be a float or int')
 
     if geo_long is not None and not isinstance(geo_long, float):
-        raise Exception('Longitude should be a float')
+        if not isinstance(geo_long, int):
+            raise Exception('Longitude should be a float or int')
 
     try:
         gif = getMap(geo_lat, geo_long)
