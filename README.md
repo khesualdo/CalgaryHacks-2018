@@ -6,10 +6,10 @@ Occurance of public shootings has increases in the last few years. In case of an
 
 We decided to create a solution that will notify the emergency services in case a shooting has happened, the following are some benefits our solution introduces: 
 
-- Shorten the time for contacting the emergency services.
-- Reduced the overhead for emergency services.
-- Provide more safety for public.
-- Multiple services could be notifed at once.
+- Shorten the time for contacting the emergency services
+- Reduced the overhead for emergency services
+- Provide more safety for public
+- Multiple services could be notifed at once
 
 ## What it does
 
@@ -34,9 +34,18 @@ This was mostly a learning experience for most members of the group to expose th
 
 ## What we learned
 
+- IoT technologies
+- Hardware low-level system implementation
+- Data processing
+- Data visualization
+
 ## What's next for CeroBuks
 
-- 
+- Replace the loudness sensor with the audio recording sensor
+- Analyse sound data and compare it with known gun sound signatures
+    - Based on matches provide an approximation of what kind of guns and how any guns shots were fired
+- Make the system less prone to false positives
+- Expand our data analysis tool base
 
 # Tech
 
