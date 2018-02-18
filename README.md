@@ -15,3 +15,4 @@
 ## TwitterBot
 
 * http://nodotcom.org/python-twitter-tutorial.html
+* http://docs.tweepy.org/en/v3.5.0/getting_started.html
