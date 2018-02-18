@@ -7,12 +7,13 @@
 	}
 
 	//Calculate time since last detection
-	$sql = 'SELECT TOP 1 * FROM GUNSHOT ORDER BY ID DESC';
+	$sql = 'SELECT * FROM GUNSHOT ORDER BY ID DESC LIMIT 1';
 	$result = mysqli_query($con, $sql);
 	$row = mysqli_fetch_array($result);
 	//$lastshot = new datetime($row['TIME']);
-	$lastshot = $row['TIME'];
-	$detection_count = 3;
+	date_default_timezone_set('America/Edmonton');
+	$lastshot = strtotime($row['TIME']);
+	$date1 = date('Y-m-d H:i:s', $lastshot);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +37,7 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav"><a class="navbar-brand" href="index.php">Gunshot Detection Panel</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav"><a class="navbar-brand" href="dashboard.php">Gunshot Detection Panel</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -49,13 +50,13 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="charts.html">
+          <a class="nav-link" href="charts.php">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Charts</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="tables.html">
+          <a class="nav-link" href="tables.php">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Tables</span>
           </a>
@@ -253,7 +254,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-comments"></i>
               </div>
-              <div class="mr-5"><?php echo $lastshot;?> days since last detection</div>
+              <div class="mr-5">Last detection on <?php echo $date1;?></div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">View Details</span>
@@ -270,38 +271,6 @@
                 <i class="fa fa-fw fa-list"></i>
               </div>
               <div class="mr-5">11 New Tasks!</div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
-              <span class="float-left">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-success o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-shopping-cart"></i>
-              </div>
-              <div class="mr-5">123 New Orders!</div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
-              <span class="float-left">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-danger o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-support"></i>
-              </div>
-              <div class="mr-5">13 New Tickets!</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">View Details</span>
