@@ -59,10 +59,18 @@ def tweet(tweet=None, geo_lat=None, geo_long=None):
         "access_token"        : KeyParser.access_token,
         "access_token_secret" : KeyParser.access_token_secret 
     }
-    api = get_api(cfg)
+
+    try
+        api = get_api(cfg)
+    except:
+        print('Could not connect to Twitter API!')
 
     if tweet is None:
         raise Exception('No msg for tweet!')
+
+    # If only msg provided, send plain tweet
+    if geo_lat is None and geo_long is None:
+        status = api.update_status(status=tweet)
 
     # Accept lat as float or int
     if geo_lat is not None and not isinstance(geo_lat, float):
