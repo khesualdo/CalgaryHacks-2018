@@ -15,22 +15,12 @@
 	$lastshot = strtotime($row['TIME']);
 	$date1 = date('Y-m-d H:i:s', $lastshot);
 
-    $jan = 0;
-    $feb = 0;
-    $mar = 0;
-    $apr = 0;
-    $may = 0;
-    $jun = 0;
-    $jul = 0;
-    $aug = 0;
-    $sep = 0;
-    $oct = 0;
-    $nov = 0;
-    $dec = 0;
+    $sql='SELECT AVG(LOUDNESS) AS avgloud FROM GUNSHOT';
+   	$query = mysqli_query($con, $sql);
+    $result = mysqli_fetch_assoc($query);
+    $average = $result['avgloud'];
+	$average = round($average, 2);
 
-    $sql = 'SELECT * FROM GUNSHOT';
-    $result = mysqli_query($con, $sql);
-	while ($row = mysqli_fetch_array($result))
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +57,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="charts.php">
+          <a class="nav-link" target="_blank" href="heatmap.html">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Charts</span>
           </a>
@@ -282,55 +272,29 @@
           </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-warning o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-list"></i>
-              </div>
-              <div class="mr-5">11 New Tasks!</div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
-              <span class="float-left">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
+         <div class="card text-white bg-warning o-hidden h-100">
+           <div class="card-body">
+             <div class="card-body-icon">
+               <i class="fa fa-fw fa-list"></i>
+             </div>
+             <div class="mr-5">Average sound detection level for the last year <?php echo $average?></div>
+           </div>
+           <a class="card-footer text-white clearfix small z-1" href="#">
+             <span class="float-left">View Details</span>
+             <span class="float-right">
+               <i class="fa fa-angle-right"></i>
+             </span>
+           </a>
+         </div>
+       </div>
       </div>
       <!-- Area Chart Example-->
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-area-chart"></i> Area Chart Example</div>
-        <div class="card-body">
-          <canvas id="myAreaChart" width="100%" height="30"></canvas>
-        </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-      </div>
+
       <div class="row">
         <div class="col-lg-8">
           <!-- Example Bar Chart Card-->
           <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-bar-chart"></i> Bar Chart Example</div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-8 my-auto">
-                  <canvas id="myBarChart" width="100" height="50"></canvas>
-                </div>
-                <div class="col-sm-4 text-center my-auto">
-                  <div class="h4 mb-0 text-primary">$34,693</div>
-                  <div class="small text-muted">YTD Revenue</div>
-                  <hr>
-                  <div class="h4 mb-0 text-warning">$18,474</div>
-                  <div class="small text-muted">YTD Expenses</div>
-                  <hr>
-                  <div class="h4 mb-0 text-success">$16,219</div>
-                  <div class="small text-muted">YTD Margin</div>
-                </div>
-              </div>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+
           </div>
           <!-- Card Columns Example Social Feed-->
           <div class="mb-0 mt-4">
@@ -349,12 +313,7 @@
         <div class="col-lg-4">
           <!-- Example Pie Chart Card-->
           <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i> Pie Chart Example</div>
-            <div class="card-body">
-              <canvas id="myPieChart" width="100%" height="100"></canvas>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+
           </div>
           <!-- Example Notifications Card-->
           <div class="card mb-3">
@@ -397,7 +356,7 @@
 			$sql = 'SELECT * FROM GUNSHOT';
 			$result = mysqli_query($con, $sql) or die('cannot show tables');
 			while($row = mysqli_fetch_array($result)){   //Creates a loop to loop through results
-				echo "<tr><td>" . $row['TIME'] . "</td><td>" . $row['LAT'] . "</td><td>". $row['LONG'] . "</td></tr>"; 
+				echo "<tr><td>" . $row['TIME'] . "</td><td>" . $row['LAT'] . "</td><td>". $row['LONG'] . "</td></tr>";
 			}
 		  ?>
 			</tbody>

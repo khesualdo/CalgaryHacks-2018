@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Heatmaps</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+      #floating-panel {
+        background-color: #fff;
+        border: 1px solid #999;
+        left: 25%;
+        padding: 5px;
+        position: absolute;
+        top: 10px;
+        z-index: 5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="map"></div>
+    <script>
+			// This example requires the Visualization library. Include the libraries=visualization
+// parameter when you first load the API. For example:
+// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
+
+var map, heatmap;
+
+function initMap() {
+	map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 13,
+		center: {lat: 51.035239, lng: -114.0590986},
+		mapTypeId: 'satellite'
+	});
+
+	getPoints();
+
+//	heatmap = new google.maps.visualization.HeatmapLayer({
+//		data: getPoints(),
+//		map: map
+//	});
+}
+
+function toggleHeatmap() {
+	heatmap.setMap(heatmap.getMap() ? null : map);
+}
+
+function changeGradient() {
+	var gradient = [
+		'rgba(100, 255, 255, 0)',
+		'rgba(100, 255, 255, 1)',
+		'rgba(100, 191, 255, 1)',
+		'rgba(100, 127, 255, 1)',
+		'rgba(100, 63, 255, 1)',
+		'rgba(100, 0, 255, 1)',
+		'rgba(100, 0, 223, 1)',
+		'rgba(100, 0, 191, 1)',
+		'rgba(100, 0, 159, 1)',
+		'rgba(100, 0, 127, 1)',
+		'rgba(100, 0, 91, 1)',
+		'rgba(127, 0, 63, 1)',
+		'rgba(191, 0, 31, 1)',
+		'rgba(255, 0, 0, 1)'
+	]
+	heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+}
+
+function changeRadius() {
+	heatmap.set('radius', heatmap.get('radius') ? null : 20);
+}
+
+function changeOpacity() {
+	heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
+}
+
+// Heatmap data: 500 Points
+function getPoints() {
+	    // function reqListener () {
+      // console.log(this.responseText);
+    // }
+
+		let lats = undefined;
+		let longs = undefined;
+    var oReq = new XMLHttpRequest(); //New request object
+		oReq.responseType = 'json';
+   // oReq.onload = function() {
+        //This is where you handle what to do with the response.
+        //The actual data is found on this.responseText
+
+       //alert(this.responseText); //Will alert: 42
+    //};
+		oReq.onreadystatechange = function() {
+    if (oReq.readyState === XMLHttpRequest.DONE) {
+			lats = oReq.response[0];
+			longs = oReq.response[1];
+			let latlongs = [];
+			for (let i = 0; i < lats.length; i++)
+			{
+				latlongs[i] = new google.maps.LatLng(lats[i], longs[i]);
+			}
+			heatmap = new google.maps.visualization.HeatmapLayer({
+				data: latlongs,
+				map: map
+			});
+      //console.log(oReq.response);
+
+    }
+  };
+    oReq.open("get", "getLatLongData.php", true);
+    //                               ^ Don't block the rest of the execution.
+    //                                 Don't wait until the request finishes to
+    //                                 continue.
+    oReq.send();
+//	return [
+	//	new google.maps.LatLng(51.035239, -114.0590986),
+	//	new google.maps.LatLng(51.035239, -114.0590986),
+	//	new google.maps.LatLng(51.035239, -114.0590986),
+	//	new google.maps.LatLng(51.035239, -114.0590986),
+	//	new google.maps.LatLng(51.035239, -114.0590986),
+	//];
+}
+		</script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlh3M8SmjaIGFN4raEByZneexW9n9Vfsg&libraries=visualization&callback=initMap">
+    </script>
+  </body>
+</html>

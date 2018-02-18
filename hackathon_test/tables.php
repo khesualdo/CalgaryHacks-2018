@@ -41,7 +41,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="charts.php">
+          <a class="nav-link" target="_blank" href="heatmap.html">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Charts</span>
           </a>
@@ -262,7 +262,7 @@
 			$sql = 'SELECT * FROM GUNSHOT';
 			$result = mysqli_query($con, $sql) or die('cannot show tables');
 			while($row = mysqli_fetch_array($result)){   //Creates a loop to loop through results
-				echo "<tr><td>" . $row['TIME'] . "</td><td>" . $row['LAT'] . "</td><td>". $row['LONG'] . "</td></tr>"; 
+				echo "<tr><td>" . $row['TIME'] . "</td><td>" . $row['LAT'] . "</td><td>". $row['LONG'] . "</td></tr>";
 			}
 		  ?>
 			</tbody>
