@@ -30,5 +30,6 @@ Temporary Items
 
 TwitterKeys.ini
 *.gif
+__pycache__
 
 # End of https://www.gitignore.io/api/macos

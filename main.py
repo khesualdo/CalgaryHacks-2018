@@ -7,30 +7,31 @@ import json
 import base64
 import datetime
 import TweetBot
+import subprocess
 
 def writeToDB(dateTime=None, loudness=None, geo_lat=None, geo_long=None):
 
 	if dateTime is None:
-        raise Exception('No date/time provided!')
+		raise Exception('No date/time provided!')
 
 	if loudness is None:
-        raise Exception('No loudness provided!')
+		raise Exception('No loudness provided!')
 
 	if geo_lat is None:
-        raise Exception('No lat provided!')
+		raise Exception('No lat provided!')
 
 	if geo_long is None:
-        raise Exception('No long provided!')
+		raise Exception('No long provided!')
 
-    # Accept lat as float or int
-    if not isinstance(geo_lat, float):
-        if not isinstance(geo_lat, int):
-            raise Exception('Latitude should be a float or int')
+	# Accept lat as float or int
+	if not isinstance(geo_lat, float):
+		if not isinstance(geo_lat, int):
+			raise Exception('Latitude should be a float or int')
 
-    # Accept long as float or int
-    if not isinstance(geo_long, float):
-        if not isinstance(geo_long, int):
-            raise Exception('Longitude should be a float or int')
+	# Accept long as float or int
+	if not isinstance(geo_long, float):
+		if not isinstance(geo_long, int):
+			raise Exception('Longitude should be a float or int')
 
 	try:
 		conn = cymysql.connect(
@@ -77,7 +78,8 @@ def on_message(mqttc,obj,msg):
 	geo_long = -114.13051000
 	writeToDB(timestamp, loudness, geo_lat, geo_long)
 	tweetMessage = "LMFAO"
-	TweetBot.tweet(tweetMessage, geo_lat, geo_long)
+	subprocess.Popen('java -jar sms.jar',shell=True,stdout=subprocess.PIPE)
+	# TweetBot.tweet(tweetMessage, geo_lat, geo_long)
 	
 def on_publish(mosq, obj, mid):
 	print("mid: " + str(mid))

@@ -60,7 +60,7 @@ def tweet(tweet=None, geo_lat=None, geo_long=None):
         "access_token_secret" : KeyParser.access_token_secret 
     }
 
-    try
+    try:
         api = get_api(cfg)
     except:
         print('Could not connect to Twitter API!')
