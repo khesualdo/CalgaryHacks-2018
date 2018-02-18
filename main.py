@@ -6,6 +6,7 @@ import paho.mqtt.client as mqtt
 import json
 import base64
 import datetime
+import TweetBot
 
 def writeToDB(dateTime = None, loudness = None, lat = None, long = None):
 	try:
@@ -44,6 +45,9 @@ def on_message(mqttc,obj,msg):
 		lat = 51.08019000
 		long = -114.13051000
 		writeToDB(timestamp, loudness, lat, long)
+		tweetMessage = "SOS:"
+		tweet(tweetMessage, lat, long)
+		
 
 def on_publish(mosq, obj, mid):
 		print("mid: " + str(mid))
