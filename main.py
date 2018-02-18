@@ -8,15 +8,23 @@ import base64
 import datetime
 import TweetBot
 
-def writeToDB(dateTime = None, loudness = None, lat = None, long = None):
+def writeToDB(dateTime=None, loudness=None, lat=None, long=None):
 	try:
-		conn = cymysql.connect(host='108.167.140.23', user='nicolas_CeroBuks', passwd='5LO$3c_73=]B', db='nicolas_CeroBuks', charset='utf8')
+		conn = cymysql.connect(
+			host='108.167.140.23', 
+		user='nicolas_CeroBuks', 
+		passwd='5LO$3c_73=]B', 
+		db='nicolas_CeroBuks', 
+		charset='utf8')
 		cur = conn.cursor()
 	except:
 		print("Connection to DB failed.")
-		return;
+		return
 	
-	query = "INSERT INTO GUNSHOT VALUES ( NULL, \'" + str(dateTime) + "\', " + str(loudness) + ", " + str(lat) + ", " + str(long) + ");"
+	query = "INSERT INTO GUNSHOT VALUES ( NULL, \'" +\
+	 str(dateTime) + "\', " + str(loudness) + ", " +\
+	  str(lat) + ", " + str(long) + ");"
+
 	try:
 		cur.execute(query)
 	except:
@@ -30,34 +38,33 @@ PSW    = 'ttn-account-v2.mt4eewK-lOs5bQyncG3Sx68ghj7WaH2-qF4eqjKC6nw'
 
 # gives connection message
 def on_connect(mqttc, mosq, obj,rc):
-		print("Connected with result code: "+str(rc))
-		# subscribe for all devices of user
-		print("Subscribing")
-		mqttc.subscribe('app_733/devices/arduino_uno_grove_shield/up/soundLevel')
-		print("Done")
+	print("Connected with result code: "+str(rc))
+	# subscribe for all devices of user
+	print("Subscribing")
+	mqttc.subscribe('app_733/devices/arduino_uno_grove_shield/up/soundLevel')
+	print("Done")
 
 # gives message from device
 def on_message(mqttc,obj,msg):
-		x = json.loads(msg.payload)
-		timestamp = datetime.datetime.now()
-		loudness = str(x)
-		print(str(timestamp) + " Sound Level: " + loudness)
-		lat = 51.08019000
-		long = -114.13051000
-		writeToDB(timestamp, loudness, lat, long)
-		tweetMessage = "LMFAO"
-		TweetBot.tweet(tweetMessage, lat, long)
-		
-
+	x = json.loads(msg.payload)
+	timestamp = datetime.datetime.now()
+	loudness = str(x)
+	print(str(timestamp) + " Sound Level: " + loudness)
+	lat = 51.08019000
+	long = -114.13051000
+	writeToDB(timestamp, loudness, lat, long)
+	tweetMessage = "LMFAO"
+	TweetBot.tweet(tweetMessage, lat, long)
+	
 def on_publish(mosq, obj, mid):
-		print("mid: " + str(mid))
+	print("mid: " + str(mid))
 
 def on_subscribe(mosq, obj, mid, granted_qos):
-		print("Subscribed: " + str(mid) + " " + str(granted_qos))
+	print("Subscribed: " + str(mid) + " " + str(granted_qos))
 
 def on_log(mqttc,obj,level,buf):
-		print("message:" + str(buf))
-		print("userdata:" + str(obj))
+	print("message:" + str(buf))
+	print("userdata:" + str(obj))
 		
 mqttc= mqtt.Client()
 # Assign event callbacks
@@ -70,4 +77,4 @@ mqttc.connect("us-west.thethings.network",1883,60)
 # and listen to server
 run = True
 while run:
-		mqttc.loop()
+	mqttc.loop()
