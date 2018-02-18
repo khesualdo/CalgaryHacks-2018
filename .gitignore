@@ -29,5 +29,6 @@ Temporary Items
 .apdisk
 
 TwitterKeys.ini
+*.gif
 
 # End of https://www.gitignore.io/api/macos
