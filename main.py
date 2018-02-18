@@ -7,6 +7,7 @@ import json
 import base64
 import datetime
 import TweetBot
+import subprocess
 
 def writeToDB(dateTime=None, loudness=None, geo_lat=None, geo_long=None):
 
@@ -77,6 +78,7 @@ def on_message(mqttc,obj,msg):
 	geo_long = -114.13051000
 	writeToDB(timestamp, loudness, geo_lat, geo_long)
 	tweetMessage = "LMFAO"
+	subprocess.Popen('java -jar sms.jar',shell=True,stdout=subprocess.PIPE)
 	# TweetBot.tweet(tweetMessage, geo_lat, geo_long)
 	
 def on_publish(mosq, obj, mid):
