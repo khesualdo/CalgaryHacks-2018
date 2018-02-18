@@ -8,7 +8,30 @@ import base64
 import datetime
 import TweetBot
 
-def writeToDB(dateTime=None, loudness=None, lat=None, long=None):
+def writeToDB(dateTime=None, loudness=None, geo_lat=None, geo_long=None):
+
+	if dateTime is None:
+        raise Exception('No date/time provided!')
+
+	if loudness is None:
+        raise Exception('No loudness provided!')
+
+	if geo_lat is None:
+        raise Exception('No lat provided!')
+
+	if geo_long is None:
+        raise Exception('No long provided!')
+
+    # Accept lat as float or int
+    if not isinstance(geo_lat, float):
+        if not isinstance(geo_lat, int):
+            raise Exception('Latitude should be a float or int')
+
+    # Accept long as float or int
+    if not isinstance(geo_long, float):
+        if not isinstance(geo_long, int):
+            raise Exception('Longitude should be a float or int')
+
 	try:
 		conn = cymysql.connect(
 			host='108.167.140.23', 
@@ -23,7 +46,7 @@ def writeToDB(dateTime=None, loudness=None, lat=None, long=None):
 	
 	query = "INSERT INTO GUNSHOT VALUES ( NULL, \'" +\
 	 str(dateTime) + "\', " + str(loudness) + ", " +\
-	  str(lat) + ", " + str(long) + ");"
+	  str(geo_lat) + ", " + str(geo_long) + ");"
 
 	try:
 		cur.execute(query)
@@ -50,11 +73,11 @@ def on_message(mqttc,obj,msg):
 	timestamp = datetime.datetime.now()
 	loudness = str(x)
 	print(str(timestamp) + " Sound Level: " + loudness)
-	lat = 51.08019000
-	long = -114.13051000
-	writeToDB(timestamp, loudness, lat, long)
+	geo_lat = 51.08019000
+	geo_long = -114.13051000
+	writeToDB(timestamp, loudness, geo_lat, geo_long)
 	tweetMessage = "LMFAO"
-	TweetBot.tweet(tweetMessage, lat, long)
+	TweetBot.tweet(tweetMessage, geo_lat, geo_long)
 	
 def on_publish(mosq, obj, mid):
 	print("mid: " + str(mid))
@@ -67,6 +90,7 @@ def on_log(mqttc,obj,level,buf):
 	print("userdata:" + str(obj))
 		
 mqttc= mqtt.Client()
+
 # Assign event callbacks
 mqttc.on_connect=on_connect
 mqttc.on_message=on_message

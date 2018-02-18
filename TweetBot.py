@@ -75,7 +75,6 @@ def tweet(tweet=None, geo_lat=None, geo_long=None):
             raise Exception('Longitude should be a float or int')
 
     try:
-
         # Send a tweet with map, lat, long
         gif = getMap(geo_lat, geo_long)
         status = api.update_with_media(filename=gif, status=tweet,lat=geo_lat,long=geo_long)
@@ -83,6 +82,6 @@ def tweet(tweet=None, geo_lat=None, geo_long=None):
         ic("Error querying GoogleMaps")
 
         # Send a tweet with lat, long
-        status = api.update_status(status=tweet)
+        status = api.update_status(status=tweet,lat=geo_lat,long=geo_long)
 
 # tweet("Oh na na na na", 39.0392, 125.7625)
