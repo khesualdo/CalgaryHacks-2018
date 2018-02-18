@@ -84,3 +84,5 @@ def tweet(tweet=None, geo_lat=None, geo_long=None):
 
         # Send a tweet with lat, long
         status = api.update_status(status=tweet)
+
+# tweet("Oh na na na na", 39.0392, 125.7625)

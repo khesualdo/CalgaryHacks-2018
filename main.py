@@ -46,7 +46,7 @@ def on_message(mqttc,obj,msg):
 		long = -114.13051000
 		writeToDB(timestamp, loudness, lat, long)
 		tweetMessage = "SOS:"
-		tweet(tweetMessage, lat, long)
+		TweetBot.tweet(tweetMessage, lat, long)
 		
 
 def on_publish(mosq, obj, mid):
