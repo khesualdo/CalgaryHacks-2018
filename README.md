@@ -30,11 +30,13 @@ Instead of blindly sending every noice recording to the background script, we ha
 
 ## Accomplishments that we're proud of
 
+This was mostly a learning experience for most members of the group to expose them to IoT, hardware low-level system implementation, as well as data processing and data visualization. CeroBuks fully functional, and we hope to squish bugs, add features, and improve it's performance in the future.
+
 ## What we learned
 
 ## What's next for CeroBuks
 
-
+- 
 
 # Tech
 
