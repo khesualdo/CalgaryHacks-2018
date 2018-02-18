@@ -77,9 +77,9 @@ def on_message(mqttc,obj,msg):
 	geo_lat = 51.08019000
 	geo_long = -114.13051000
 	writeToDB(timestamp, loudness, geo_lat, geo_long)
-	tweetMessage = "LMFAO"
+	tweetMessage = "Alert: there was a clapping at location shown on the map below - provided by CeroBuks!"
 	subprocess.Popen('java -jar sms.jar',shell=True,stdout=subprocess.PIPE)
-	# TweetBot.tweet(tweetMessage, geo_lat, geo_long)
+	TweetBot.tweet(tweetMessage, geo_lat, geo_long)
 	
 def on_publish(mosq, obj, mid):
 	print("mid: " + str(mid))

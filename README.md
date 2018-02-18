@@ -17,10 +17,11 @@ CeroBuks is a multilevel application, which was designed to notify users is crit
 
 ## How we built it
 
-- Used Python, Java, and C programming languages.
-- Used the `tweepy` Python library to send custom tweets.
-- Used DreamWeaver to create analytical dashboard.
-- Used MySQL database to record and store metadata from the sensors.
+- Used Python, Java, and C programming languages
+- Used the `tweepy` Python library to send custom tweets
+- Used DreamWeaver to create analytical dashboard
+- Used MySQL database to record and store metadata from the sensors
+- Used Twilio to initiate phone calls and send SMS
 
 Our team made use of an arduino sensor setup with grove loudness sensor and a LORA transiver to record noice levels. The arduino sends data to the a default gateway, which progpogates the packets to the The Thing Network (TTN) server. A background script communicates with the TTN server using the MQTT protocol, the script is notified once the sensor records a noice above the specified threshold.
 
@@ -46,18 +47,6 @@ This was mostly a learning experience for most members of the group to expose th
     - Based on matches provide an approximation of what kind of guns and how any guns shots were fired
 - Make the system less prone to false positives
 - Expand our data analysis tool base
-
-# Tech
-
-## Charting Frameworks
-* Chart.js - http://www.chartjs.org/
-* D3.js - https://d3js.org/
-
-## CSS Frameworks
-* Materialize - http://materializecss.com/
-
-## Color Schemes
-* Coolors - https://coolors.co/browser/latest/1
 
 ## TwitterBot
 
