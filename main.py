@@ -45,7 +45,7 @@ def on_message(mqttc,obj,msg):
 		lat = 51.08019000
 		long = -114.13051000
 		writeToDB(timestamp, loudness, lat, long)
-		tweetMessage = "SOS:"
+		tweetMessage = "LMFAO"
 		TweetBot.tweet(tweetMessage, lat, long)
 		
 
