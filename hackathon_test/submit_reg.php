@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
 		else {
 			$error = "SQL error..";
 		}
-	}	
+	}
 
 	}
 }
