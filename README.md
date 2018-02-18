@@ -22,9 +22,11 @@ CeroBuks is a multilevel application, which was designed to notify users is crit
 - Used DreamWeaver to create analytical dashboard.
 - Used MySQL database to record and store metadata from the sensors.
 
-A background script runs in the background and continually receives updates from the gateway if a noice above the threshold was recorded by the sensor.
+Our team made use of an arduino sensor setup with grove loudness sensor and a LORA transiver to record noice levels. The arduino sends data to the a default gateway, which progpogates the packets to the The Thing Network (TTN) server. A background script communicates with the TTN server using the MQTT protocol, the script is notified once the sensor records a noice above the specified threshold.
 
 ## Challenges we ran into
+
+Instead of blindly sending every noice recording to the background script, we had to modify the sensor to only send notifications if the noice above the specified threshold was recorded.
 
 ## Accomplishments that we're proud of
 
