@@ -2,7 +2,7 @@
 import tweepy
 import KeyParser
 
-# Imports for Google Static Maps API
+# Imports for Google Static Maps
 from io import BytesIO
 from PIL import Image
 from urllib import request
@@ -10,12 +10,18 @@ from urllib import request
 # Debug library
 from icecream import ic
 
-def id(str=None):
+'''
+Helper method for creating a tag
+'''
+def tag(str=None):
     if str is None:
         return None
     else:
         return '@'+str
 
+'''
+Helper method for creating a hash
+'''
 def hash(str=None):
     if str is None:
         return None
@@ -46,13 +52,21 @@ def getMap(geo_lat, geo_long):
     Image.open(buffer).save('MAP.gif','GIF')
     return 'MAP.gif'
 
+'''
+Authenticate for Twitter
+'''
 def get_api(cfg):
     auth = tweepy.OAuthHandler(cfg['consumer_key'], cfg['consumer_secret'])
     auth.set_access_token(cfg['access_token'], cfg['access_token_secret'])
     return tweepy.API(auth)
 
+'''
+Create and post a tweet with a message body, lat, and long
+eg. tweet("Oh na na na na", 39.0392, 125.7625)
+'''
 def tweet(tweet=None, geo_lat=None, geo_long=None):
 
+    # Key value mapping for Twitter keys
     cfg = { 
         "consumer_key"        : KeyParser.consumer_key,
         "consumer_secret"     : KeyParser.consumer_secret,
@@ -91,5 +105,3 @@ def tweet(tweet=None, geo_lat=None, geo_long=None):
 
         # Send a tweet with lat, long
         status = api.update_status(status=tweet,lat=geo_lat,long=geo_long)
-
-# tweet("Oh na na na na", 39.0392, 125.7625)
