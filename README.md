@@ -11,6 +11,15 @@
 
 I worked on the the Twitter Bot - `TwitterBoy.py`, which automatically sent a tweet after a gunshot was detected. The tweet contained the message body and a map with the location of where the gunshot occurred.
 
+## How to run
+
+* `tweepy` works with Python3.6 and below
+* Everything else works with Python3.6 and above
+
+```
+> python3.6 Main.py
+```
+
 ## Inspiration
 
 Occurrence of public shootings has increased in the last few years. In case of an emergency in is not always possible for the hostages and victims to contact the police, but even if they find the chance, it usually takes away precious time for emergency services to respond. On top of that, last year, 8 out of 10 gunfires were not reported to police service, which only more impends their jobs.
