@@ -1,4 +1,6 @@
-# CalgaryHacks2018
+# CeroBuks
+
+![Timeout Chrome Extension](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/605/974/datas/gallery.jpg)
 
 ## Inspiration
 

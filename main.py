@@ -78,7 +78,7 @@ def on_message(mqttc,obj,msg):
 	geo_long = -114.13051000
 	writeToDB(timestamp, loudness, geo_lat, geo_long)
 	tweetMessage = "Alert: there was a clapping at location shown on the map below - provided by CeroBuks!"
-	subprocess.Popen('java -jar sms.jar',shell=True,stdout=subprocess.PIPE)
+	subprocess.Popen('java -jar Twilio-SMS-Call.jar',shell=True,stdout=subprocess.PIPE)
 	TweetBot.tweet(tweetMessage, geo_lat, geo_long)
 	
 def on_publish(mosq, obj, mid):
@@ -90,17 +90,21 @@ def on_subscribe(mosq, obj, mid, granted_qos):
 def on_log(mqttc,obj,level,buf):
 	print("message:" + str(buf))
 	print("userdata:" + str(obj))
-		
-mqttc= mqtt.Client()
 
-# Assign event callbacks
-mqttc.on_connect=on_connect
-mqttc.on_message=on_message
+def main():
+	mqttc= mqtt.Client()
 
-mqttc.username_pw_set(APPID, PSW)
-mqttc.connect("us-west.thethings.network",1883,60)
+	# Assign event callbacks
+	mqttc.on_connect=on_connect
+	mqttc.on_message=on_message
 
-# and listen to server
-run = True
-while run:
-	mqttc.loop()
+	mqttc.username_pw_set(APPID, PSW)
+	mqttc.connect("us-west.thethings.network",1883,60)
+
+	# and listen to server
+	run = True
+	while run:
+		mqttc.loop()
+
+if __name__ == "__main__":
+	main()
