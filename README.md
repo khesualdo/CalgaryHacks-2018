@@ -4,6 +4,13 @@
 
 [Twitter](https://twitter.com/CeroBuks)
 
+## Describe your contribution
+
+* http://nodotcom.org/python-twitter-tutorial.html
+* http://docs.tweepy.org/en/v3.5.0/getting_started.html
+
+I worked on the the Twitter Bot - `TwitterBoy.py`, which automatically sent a tweet after a gunshot was detected. The tweet contained the message body and a map with the location of where the gunshot occurred.
+
 ## Inspiration
 
 Occurrence of public shootings has increased in the last few years. In case of an emergency in is not always possible for the hostages and victims to contact the police, but even if they find the chance, it usually takes away precious time for emergency services to respond. On top of that, last year, 8 out of 10 gunfires were not reported to police service, which only more impends their jobs.
@@ -51,10 +58,3 @@ This was mostly a learning experience for most members of the group to expose th
     - Based on matches provide an approximation of what kind of guns and how any gunshots were fired
 - Make the system less prone to false positives
 - Expand our data analysis tools base
-
-## Describe your contribution
-
-* http://nodotcom.org/python-twitter-tutorial.html
-* http://docs.tweepy.org/en/v3.5.0/getting_started.html
-
-I worked on the the Twitter Bot - `TwitterBoy.py`, which automatically sent a tweet after a gunshot was detected. The tweet contained the message body and a map with the location of where the gunshot occurred.
