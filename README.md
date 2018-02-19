@@ -1,6 +1,8 @@
 # CeroBuks
 
-![Timeout Chrome Extension](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/605/974/datas/gallery.jpg)
+![CeroBuks](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/605/974/datas/gallery.jpg)
+
+[Twitter](https://twitter.com/CeroBuks)
 
 ## Inspiration
 
@@ -50,7 +52,9 @@ This was mostly a learning experience for most members of the group to expose th
 - Make the system less prone to false positives
 - Expand our data analysis tools base
 
-## TwitterBot
+## Describe your contribution
 
 * http://nodotcom.org/python-twitter-tutorial.html
 * http://docs.tweepy.org/en/v3.5.0/getting_started.html
+
+I worked on the the Twitter Bot - `TwitterBoy.py`, which automatically sent a tweet after a gunshot was detected. The tweet contained the message body and a map with the location of where the gunshot occurred.
