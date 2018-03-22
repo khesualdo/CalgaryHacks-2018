@@ -1,6 +1,6 @@
-# CeroBuks :gun: :bomb: :loudspeaker: 
+# Shootify :gun: :bomb: :loudspeaker: 
 
-![CeroBuks](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/605/974/datas/gallery.jpg)
+![Shootify](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/605/974/datas/gallery.jpg)
 
 [Twitter](https://twitter.com/CeroBuks)
 
@@ -33,7 +33,7 @@ We decided to create a solution that will notify the emergency services in case 
 
 ## What it does
 
-CeroBuks is a multilevel application, which was designed to notify users and emergency services in critical situations by modern ways of communication such as Twitter, phone calls, and SMS.
+Shootify is a multilevel application, which was designed to notify users and emergency services in critical situations by modern ways of communication such as Twitter, phone calls, and SMS.
 
 ## How we built it
 
@@ -51,7 +51,7 @@ Instead of blindly sending every noise recording to the background script, we ha
 
 ## Accomplishments that we're proud of
 
-This was mostly a learning experience for most members of the group to expose them to IoT, hardware low-level system implementation, as well as data processing and data visualization. CeroBuks is fully functional, and we hope to squish bugs, add features, and improve it's performance in the future.
+This was mostly a learning experience for most members of the group to expose them to IoT, hardware low-level system implementation, as well as data processing and data visualization. Shootify is fully functional, and we hope to squish bugs, add features, and improve it's performance in the future.
 
 ## What we learned
 
@@ -60,7 +60,7 @@ This was mostly a learning experience for most members of the group to expose th
 - Data processing
 - Data visualization
 
-## What's next for CeroBuks
+## What's next for Shootify
 
 - Replace the loudness sensor with the audio recording sensor
 - Analyze sound data and compare it with known gun sound signatures
