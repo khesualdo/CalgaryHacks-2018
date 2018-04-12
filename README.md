@@ -2,9 +2,7 @@
 
 ![Shootify](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/605/974/datas/gallery.jpg)
 
-[Twitter](https://twitter.com/CeroBuks)
-
-## Describe your contribution
+## My contribution
 
 * http://nodotcom.org/python-twitter-tutorial.html
 * http://docs.tweepy.org/en/v3.5.0/getting_started.html
