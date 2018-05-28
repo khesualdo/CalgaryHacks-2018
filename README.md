@@ -2,6 +2,12 @@
 
 ![Shootify](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/605/974/datas/gallery.jpg)
 
+Theme: "Long-range Internet of Things". 
+
+Shootify is a scalable and reliable gunshot alerting analysis system for a Smart City.
+
+[Devpost](https://devpost.com/software/cerobuks)
+
 ## My contribution
 
 * http://nodotcom.org/python-twitter-tutorial.html
