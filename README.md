@@ -13,7 +13,7 @@ Shootify is a scalable and reliable gunshot alerting analysis system for a Smart
 * http://nodotcom.org/python-twitter-tutorial.html
 * http://docs.tweepy.org/en/v3.5.0/getting_started.html
 
-I worked on the the Twitter Bot - `TwitterBoy.py`, which automatically sent a tweet after a gunshot was detected. The tweet contained the message body and a map with the location of where the gunshot occurred.
+I worked on the the Twitter Bot - `TwitterBoy.py`, which automatically sent a tweet after a gunshot was detected. The tweet contained a message body as well as a map with the location of where the gunshot occurred.
 
 ## How to run
 
