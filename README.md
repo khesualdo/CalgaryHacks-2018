@@ -4,7 +4,7 @@
 
 Theme: "Long-range Internet of Things". 
 
-Shootify is a scalable and reliable gunshot alerting analysis system for Smart City.
+Shootify is a scalable and reliable gunshot alerting analysis system for Smart Cities.
 
 [Devpost](https://devpost.com/software/cerobuks)
 
